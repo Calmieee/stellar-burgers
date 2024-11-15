@@ -5,12 +5,14 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
-import { constructorIngredientsSlice } from 'src/slices/ConstructorIngredients';
-import { ingredientsSlice } from 'src/slices/IngrediensSlice';
+import { constructorIngredientsSlice } from '../slices/constructorIngredients';
+import { ingredientsSlice } from '../slices/ingrediensSlice';
+import { userSlice } from '../slices/userSlice';
 
 const rootReducer = combineReducers({
   [ingredientsSlice.name]: ingredientsSlice.reducer,
   [constructorIngredientsSlice.name]: constructorIngredientsSlice.reducer,
+  [userSlice.name]: userSlice.reducer
 });
 
 const store = configureStore({
