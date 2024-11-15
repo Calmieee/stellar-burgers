@@ -1,12 +1,12 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { selectUserData } from '../../slices/userSlice';
+import { selectUserData } from '../../slices/UserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAddedIngredients,
   selectAddedBunDetails
-} from '../../slices/constructorIngredients';
+} from '../../slices/ConstructorIngredients';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from 'src/services/store';
 
