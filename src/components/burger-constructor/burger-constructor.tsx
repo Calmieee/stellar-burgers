@@ -5,26 +5,44 @@ import { selectUserData } from '../../slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAddedIngredients,
-  selectAddedBunDetails
+  selectAddedBunDetails,
+  clearConstructor
 } from '../../slices/constructorIngredients';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from 'src/services/store';
+import {
+  selectOrderRequest,
+  selectOrderData,
+  orderBurgerThunk,
+  cleanConstructor,
+  cleanOrderData
+} from '../../slices/orderBurgerSlice';
+
+type TconstructorItems = {
+  bun: TBun | null;
+  ingredients: TConstructorIngredient[];
+};
+
+type TBun = {
+  price: number;
+};
 
 export const BurgerConstructor: FC = () => {
   const navigation = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+
   const addedIngredients = useSelector(selectAddedIngredients);
   const addedBunDetails = useSelector(selectAddedBunDetails);
   const user = useSelector(selectUserData);
 
-  const constructorItems = {
+  const constructorItems: TconstructorItems = {
     bun: addedBunDetails,
     ingredients: addedIngredients
   };
 
-  const orderRequest = false;
+  const orderRequest = useSelector(selectOrderRequest);
 
-  const orderModalData = null;
+  const orderModalData = useSelector(selectOrderData);
 
   const onOrderClick = () => {
     if (!user) {
@@ -32,8 +50,20 @@ export const BurgerConstructor: FC = () => {
       return;
     }
     if (!constructorItems.bun || orderRequest) return;
+    const idIngredients = addedIngredients.map((ingredient) => ingredient._id);
+    const bun = addedBunDetails?._id;
+    if (bun) {
+      idIngredients.push(bun, bun);
+    }
+    dispatch(orderBurgerThunk(idIngredients)).then(() => {
+      dispatch(cleanConstructor());
+      dispatch(clearConstructor());
+    });
   };
-  const closeOrderModal = () => {};
+  const closeOrderModal = () => {
+    dispatch(cleanOrderData());
+    navigation('/');
+  };
 
   const price = useMemo(
     () =>
