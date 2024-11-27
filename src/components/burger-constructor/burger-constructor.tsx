@@ -7,7 +7,7 @@ import {
   selectAddedIngredients,
   selectAddedBunDetails,
   clearConstructor
-} from '../../slices/constructorIngredients';
+} from '../../slices/constructorIngredientsSlice';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from 'src/services/store';
 import {
