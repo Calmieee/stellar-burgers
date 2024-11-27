@@ -2,14 +2,13 @@ import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 import { selectUserData } from '../../slices/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../services/store'
 import {
   selectAddedIngredients,
   selectAddedBunDetails,
   clearConstructor
 } from '../../slices/constructorIngredientsSlice';
 import { useNavigate } from 'react-router-dom';
-import { AppDispatch } from 'src/services/store';
 import {
   selectOrderRequest,
   selectOrderData,
@@ -29,7 +28,7 @@ type TBun = {
 
 export const BurgerConstructor: FC = () => {
   const navigation = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch();
 
   const addedIngredients = useSelector(selectAddedIngredients);
   const addedBunDetails = useSelector(selectAddedBunDetails);

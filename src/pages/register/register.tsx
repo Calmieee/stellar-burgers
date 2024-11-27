@@ -1,9 +1,8 @@
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
 import { TRegisterData } from '@api';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../services/store';
 import { Navigate } from 'react-router-dom';
-import { AppDispatch } from '../../services/store';
 import {
   clearErrors,
   selectRegisterError,
@@ -16,7 +15,7 @@ export const Register: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(clearErrors());
