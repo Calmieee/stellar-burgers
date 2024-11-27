@@ -6,7 +6,7 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 import { constructorIngredientsSlice } from '../slices/constructorIngredients';
-import { ingredientsSlice } from '../slices/ingrediensSlice';
+import { ingredientsSlice } from '../slices/ingredientsSlice';
 import { userSlice } from '../slices/userSlice';
 import { feedSlice } from '../slices/feedSlice';
 import { orderBurgerSlice } from '../slices/orderBurgerSlice';

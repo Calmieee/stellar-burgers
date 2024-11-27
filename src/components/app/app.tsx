@@ -17,7 +17,7 @@ import { ProtectedRoute } from '../protected-route/ProtectedRoute';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../services/store';
 import { useEffect } from 'react';
-import { fetchIngredients } from '../../slices/ingrediensSlice';
+import { fetchIngredients } from '../../slices/ingredientsSlice';
 import { checkUserAuth } from '../../slices/userSlice';
 
 const App = () => {
