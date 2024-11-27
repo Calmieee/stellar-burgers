@@ -10,13 +10,15 @@ import { ingredientsSlice } from '../slices/ingrediensSlice';
 import { userSlice } from '../slices/userSlice';
 import { feedSlice } from '../slices/feedSlice';
 import { orderBurgerSlice } from '../slices/orderBurgerSlice';
+import { orderSlice } from '../slices/orderSlice';
 
 const rootReducer = combineReducers({
   [ingredientsSlice.name]: ingredientsSlice.reducer,
   [constructorIngredientsSlice.name]: constructorIngredientsSlice.reducer,
   [userSlice.name]: userSlice.reducer,
   [feedSlice.name]: feedSlice.reducer,
-  [orderBurgerSlice.name]: orderBurgerSlice.reducer
+  [orderBurgerSlice.name]: orderBurgerSlice.reducer,
+  [orderSlice.name]: orderSlice.reducer
 });
 
 const store = configureStore({
