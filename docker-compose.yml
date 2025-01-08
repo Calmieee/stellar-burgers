@@ -1,0 +1,16 @@
+services:
+  frontend:
+    build:
+    context: .
+    dockerfile: Dockerfile.frontend
+    container_name: frontend
+    ports:
+      - "4000:4000"
+  nginx:
+    image: nginx:1.27.3-bookworm-perl
+    ports:
+      - "10416:443"
+    volumes:
+      - ./nginx_conf:/etc/nginx/conf.d/
+    depends_on:
+      - audit
