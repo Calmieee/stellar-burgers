@@ -1,0 +1,4 @@
+node_modules
+.storybook
+README.md
+.env.example
