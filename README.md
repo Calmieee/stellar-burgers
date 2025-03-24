@@ -14,6 +14,6 @@ npm run start
 ```
 Storybook
 ```
-npm run start
+npm run storybook
 ```
 
